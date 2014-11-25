@@ -79,3 +79,15 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+alias tlogr='~/bin/tlog.sh'                                                                                                                                                                                                              
+alias add_keys='~/bin/add_keys.sh'                                               
+alias mci='mvn -f ~/grabyo/pom.xml clean install'                                
+alias mcil='mvn clean tomcat:redeploy'                                           
+alias sync='~/bin/sync.sh'                                                       
+alias tlog='tail -f /usr/share/tomcat7/logs/catalina.out'                        
+alias tomst='/usr/share/tomcat7/bin/startup.sh'                                  
+alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'                                 
+alias pstom='ps -aux | grep "tomcat"'                                            
+alias mcis='mci -DskipTests=true'                                                
+alias mcils='mvn clean tomcat:redeploy -DskipTests=true'                         
+alias gr='cd ~/grabyo'      
