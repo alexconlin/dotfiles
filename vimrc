@@ -100,3 +100,14 @@ set runtimepath+=~/.vim
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+
+" ctrlp settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = 'target\|build\|bin'
+
+" Enable mouse usage
+:set mouse=a
+
+" Enable NERDtree on vim start with no arguments
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
