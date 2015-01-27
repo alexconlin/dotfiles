@@ -96,6 +96,7 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost'
 alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
-
+alias cdtom='cd /usr/share/tomcat7'
+alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
 # HOME
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
