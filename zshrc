@@ -52,6 +52,14 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH=${PATH}:/bin/
+PATH=${PATH}:/sbin/
+PATH=${PATH}:/usr/bin/
+PATH=${PATH}:/usr/sbin/
+PATH=${PATH}:/opt/local/bin/
+PATH=${PATH}:/opt/local/sbin/
+PATH=${PATH}:/usr/local/git/bin
+PATH=${PATH}:/usr/local/git/sbin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -94,6 +102,7 @@ alias gr='cd ~/grabyo'
 alias gashl='git --no-pager stash list'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias syncl='~/bin/synclchc.sh'
 
 # HOME
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
