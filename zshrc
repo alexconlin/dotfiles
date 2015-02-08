@@ -103,6 +103,10 @@ alias gashl='git --no-pager stash list'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias syncl='~/bin/synclchc.sh'
-
+alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost'
+alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
+alias cdtom='cd /usr/share/tomcat7'
+alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
+alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 # HOME
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
