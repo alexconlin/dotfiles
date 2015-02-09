@@ -7,3 +7,6 @@
 [submodule "vim/bundle/vim-hackernews"]
 	path = vim/bundle/vim-hackernews
 	url = https://github.com/ryanss/vim-hackernews.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
