@@ -113,3 +113,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 set pastetoggle=<F10>
+
+" Set the default clipboard to the X windows clipboard
+set clipboard=unnamedplus
