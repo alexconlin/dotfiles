@@ -1,9 +1,11 @@
-#if [[ $(uname) == 'Darwin' ]]
-#then
-#    alias ls='ls -G'
-#else
-#    alias ls='ls --color'
-#fi
+if [[ $(uname) == 'Darwin' ]]
+then
+    ENVIR="osx";
+    GRABYOPATH="/Users/alexgrabyo/gitrepositories/grabyo/grabyo"
+else
+    ENVIR="linux";
+    GRABYOPATH="/user/alex/grabyo"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -96,7 +98,7 @@ PATH=${PATH}:/usr/local/git/sbin
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 alias tlogr='~/bin/tlog.sh'                                                                                                                                                                                                              
 alias add_keys='~/bin/add_keys.sh'                                               
-alias mci='mvn -f ~/grabyo/pom.xml clean install'                                
+alias mci='mvn -f $GRABYOPATH/pom.xml clean install'                                
 alias mcil='mvn clean tomcat:redeploy'                                           
 alias sync='~/bin/sync.sh'                                                       
 alias tlog='tail -f /usr/share/tomcat7/logs/catalina.out'                        
