@@ -2,9 +2,11 @@ if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
     GRABYOPATH="/Users/alexgrabyo/gitrepositories/grabyo/grabyo"
+    GITHOMEPATH="/Users/alexgrabyo/gitrepositories"
 else
     ENVIR="linux";
-    GRABYOPATH="/user/alex/grabyo"
+    GRABYOPATH="/home/alex/grabyo"
+    GITHOMEPATH="/home/alex"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -118,5 +120,6 @@ alias cdtom='cd /usr/share/tomcat7'
 alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
 alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 alias hrt='/home/alex/bin/hard-reset-tomcat.sh'
+alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
 # HOME
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
