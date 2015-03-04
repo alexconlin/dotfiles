@@ -122,7 +122,9 @@ alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 alias hrt='/home/alex/bin/hard-reset-tomcat.sh'
 alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
 # HOME
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+if [[ "$ENVIR" == "osx" ]] then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+fi
 # EDITING MODE (VI)
 bindkey -v
 export KEYTIMEOUT=1
