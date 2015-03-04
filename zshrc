@@ -125,6 +125,13 @@ alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
 if [[ "$ENVIR" == "osx" ]] then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 fi
-# EDITING MODE (VI)
+# EDITING MODE (VI) (from http://dougblack.io/words/zsh-vi-mode.html)
 bindkey -v
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 export KEYTIMEOUT=1
