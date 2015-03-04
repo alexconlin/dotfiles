@@ -123,3 +123,6 @@ alias hrt='/home/alex/bin/hard-reset-tomcat.sh'
 alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
 # HOME
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+# EDITING MODE (VI)
+bindkey -v
+export KEYTIMEOUT=1
