@@ -123,3 +123,6 @@ set clipboard=unnamedplus
 :set textwidth=0
 :set wrapmargin=0
 :set formatoptions+=l
+
+" Set backspace options
+set backspace=indent,eol,start
