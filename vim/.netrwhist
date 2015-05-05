@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/alex/master-chef/cookbooks/ffmpeg/recipes'
 let g:netrw_dirhist_2='/home/alex/master-chef/cookbooks/ffmpeg'
 let g:netrw_dirhist_3='/home/alex/master-chef/cookbooks/ffmpeg/recipes'
 let g:netrw_dirhist_4='/Users/alexgrabyo/dotfiles/oh-my-zsh'
 let g:netrw_dirhist_5='/opt/homebrew-cask/Caskroom/sublime-text3/Build 3065/Sublime Text.app'
+let g:netrw_dirhist_6='/home/alex/grabyo'
+let g:netrw_dirhist_7='/home/alex/grabyo/.git'
+let g:netrw_dirhist_8='/home/alex/grabyo/.git/branches'
