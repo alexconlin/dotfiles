@@ -99,28 +99,33 @@ PATH=${PATH}:/usr/local/git/sbin
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 alias tlogr='~/bin/tlog.sh'                                                                                                                                                                                                              
-alias add_keys='~/bin/add_keys.sh'                                               
-alias mci='mvn -f $GRABYOPATH/pom.xml clean install'                                
-alias mcil='mvn clean tomcat:redeploy'                                           
-alias sync='~/bin/sync.sh'                                                       
-alias tlog='tail -f /usr/share/tomcat7/logs/catalina.out'                        
-alias tomst='/usr/share/tomcat7/bin/startup.sh'                                  
-alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'                                 
-alias pstom='ps -aux | grep "tomcat"'                                            
-alias mcis='mci -DskipTests=true'                                                
-alias mcils='mvn clean tomcat:redeploy -DskipTests=true'                         
+alias add_keys='~/bin/add_keys.sh'
+alias mci='mvn -f $GRABYOPATH/pom.xml clean install'
+alias mcil='mvn clean tomcat:redeploy'
+alias sync='~/bin/sync.sh'
+alias tlog='tail -F /usr/share/tomcat7/logs/catalina.out'
+alias tomst='/usr/share/tomcat7/bin/startup.sh'
+alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'
+alias pstom='ps aux | grep "tomcat"'
+alias mcis='mci -DskipTests=true'
+alias mcils='mvn clean tomcat:redeploy -DskipTests=true'
 alias gr='cd ~/grabyo'
 alias gashl='git --no-pager stash list'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias syncl='~/bin/synclchc.sh'
-alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost'
+alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (aplay -q ~/Music/beep-01a.wav)'
 alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
 alias cdtom='cd /usr/share/tomcat7'
 alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
 alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 alias hrt='/home/alex/bin/hard-reset-tomcat.sh'
 alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
+alias sss='ebenv ssh studio-prod'
+alias lo='libreoffice --calc'
+alias vimz='vim ~/.zshrc'
+alias srcz='source ~/.zshrc'
+
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
@@ -136,3 +141,5 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
+# Terminal colors for vim solarized theme
+# export TERM=screen-256color-bce
