@@ -126,3 +126,12 @@ set clipboard=unnamedplus
 
 " Set backspace options
 set backspace=indent,eol,start
+
+" Set delete with no copy shortcuts
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dPu
