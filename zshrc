@@ -1,8 +1,14 @@
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
-    GRABYOPATH="/Users/alexgrabyo/gitrepositories/grabyo/grabyo"
-    GITHOMEPATH="/Users/alexgrabyo/gitrepositories"
+    if [[ $(hostname) == 'Alexs-MacBook-Pro-2.local' ]]
+    then
+        GRABYOPATH="/Users/alexgrabyo/grabyo"
+        GITHOMEPATH="/Users/alexgrabyo"
+    else
+        GRABYOPATH="/Users/alexgrabyo/gitrepositories/grabyo/grabyo"
+        GITHOMEPATH="/Users/alexgrabyo/gitrepositories"
+    fi
 else
     ENVIR="linux";
     GRABYOPATH="/home/alex/grabyo"
@@ -103,7 +109,8 @@ alias add_keys='~/bin/add_keys.sh'
 alias mci='mvn -f $GRABYOPATH/pom.xml clean install'
 alias mcil='mvn clean tomcat:redeploy'
 alias sync='~/bin/sync.sh'
-alias tlog='tail -F /usr/share/tomcat7/logs/catalina.out'
+alias tlog='tail -F /var/log/tomcat7/catalina.out'
+alias vimlog='vim /var/log/tomcat7/catalina.out'
 alias tomst='/usr/share/tomcat7/bin/startup.sh'
 alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'
 alias pstom='ps aux | grep "tomcat"'
@@ -114,21 +121,26 @@ alias gashl='git --no-pager stash list'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias syncl='~/bin/synclchc.sh'
-alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (aplay -q ~/Music/beep-01a.wav)'
+alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay -q ~/Music/beep-01a.wav)'
+alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay -q ~/Music/beep-01a.wav)'
 alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
 alias cdtom='cd /usr/share/tomcat7'
 alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
 alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
-alias hrt='/home/alex/bin/hard-reset-tomcat.sh'
-alias ebenv='ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb'
+alias hrt='~/bin/hard-reset-tomcat.sh'
+alias ebenv='nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm'
+alias es='nocorrect ebenv ssh'
 alias sss='ebenv ssh studio-prod'
 alias lo='libreoffice --calc'
 alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
+alias lpssh='lpass show -c --password 2767727486'
 
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+    export HOMEBREW_CASK_OPTS='--appdir=/Applications'
+    alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 fi
 # EDITING MODE (VI) (from http://dougblack.io/words/zsh-vi-mode.html)
 bindkey -v

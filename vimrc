@@ -102,7 +102,7 @@ syntax on
 filetype plugin indent on
 
 " ctrlp settings
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/target/*
 let g:ctrlp_custom_ignore = 'target\|build\|bin'
 
 " Enable mouse usage
