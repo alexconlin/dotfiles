@@ -1,0 +1,22 @@
+{
+	"always_show_minimap_viewport": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"draw_minimap_border": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"target"
+	],
+	"font_size": 11,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"CSS",
+		"Vintage"
+	],
+	"preview_on_click": false
+}

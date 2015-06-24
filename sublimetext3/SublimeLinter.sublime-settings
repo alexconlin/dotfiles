@@ -1,0 +1,19 @@
+{
+	"user":
+	{
+		"lint_mode": "background",
+		"linters":
+		{
+			"jshint":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				]
+			}
+		}
+	}
+}
