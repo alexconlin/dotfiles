@@ -1,7 +1,7 @@
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
-    if [[ $(hostname) == 'alex-grabyo-macbook-pro' ]]
+    if [[ $(hostname) == 'alexs-grabyo-macbook-pro' ]]
     then
         GRABYOPATH="/Users/alexgrabyo/grabyo"
         GITHOMEPATH="/Users/alexgrabyo"
