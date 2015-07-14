@@ -1,7 +1,7 @@
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
-    if [[ $(hostname) == 'Alexs-MacBook-Pro-2.local' ]]
+    if [[ $(hostname) == 'alex-grabyo-macbook-pro' ]]
     then
         GRABYOPATH="/Users/alexgrabyo/grabyo"
         GITHOMEPATH="/Users/alexgrabyo"
@@ -155,3 +155,5 @@ export KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
 # Terminal colors for vim solarized theme
 # export TERM=screen-256color-bce
+
+source /Users/alexgrabyo/.iterm2_shell_integration.zsh
