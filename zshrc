@@ -118,8 +118,6 @@ alias mcis='mci -DskipTests=true'
 alias mcils='mvn clean tomcat:redeploy -DskipTests=true'
 alias gr='cd ~/grabyo'
 alias gashl='git --no-pager stash list'
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
 alias syncl='~/bin/synclchc.sh'
 alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/beep-01a.wav)'
 alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay ~/Music/beep-01a.wav)'
@@ -135,6 +133,7 @@ alias lo='libreoffice --calc'
 alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
 alias lpssh='lpass show -c --password 2767727486'
+alias syncco='aws s3 sync . s3://conlinoakley.com/ --profile alexconlin --delete'
 
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
@@ -157,3 +156,5 @@ bindkey '^R' history-incremental-search-backward
 # export TERM=screen-256color-bce
 
 source /Users/alexgrabyo/.iterm2_shell_integration.zsh
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
