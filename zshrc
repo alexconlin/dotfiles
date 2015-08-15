@@ -156,5 +156,3 @@ bindkey '^R' history-incremental-search-backward
 # export TERM=screen-256color-bce
 
 source /Users/alexgrabyo/.iterm2_shell_integration.zsh
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
