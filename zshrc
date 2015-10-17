@@ -69,14 +69,15 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-PATH=${PATH}:/bin/
-PATH=${PATH}:/sbin/
-PATH=${PATH}:/usr/bin/
-PATH=${PATH}:/usr/sbin/
-PATH=${PATH}:/opt/local/bin/
-PATH=${PATH}:/opt/local/sbin/
+PATH=${PATH}:/bin
+PATH=${PATH}:/sbin
+PATH=${PATH}:/usr/bin
+PATH=${PATH}:/usr/sbin
+PATH=${PATH}:/opt/local/bin
+PATH=${PATH}:/opt/local/sbin
 PATH=${PATH}:/usr/local/git/bin
 PATH=${PATH}:/usr/local/git/sbin
+PATH=${PATH}:/Users/alexgrabyo/.local/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -119,8 +120,8 @@ alias mcils='mvn clean tomcat:redeploy -DskipTests=true'
 alias gr='cd ~/grabyo'
 alias gashl='git --no-pager stash list'
 alias syncl='~/bin/synclchc.sh'
-alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/beep-01a.wav)'
-alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay ~/Music/beep-01a.wav)'
+alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/bathtub_style.mp3)'
+alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay ~/Music/bathtub_style.mp3)'
 alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
 alias cdtom='cd /usr/share/tomcat7'
 alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
@@ -128,7 +129,7 @@ alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 alias hrt='~/bin/hard-reset-tomcat.sh'
 alias ebenv='nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm'
 alias es='nocorrect ebenv ssh'
-alias sss='ebenv ssh studio-prod'
+alias ess='ebenv ssh studio-prod'
 alias lo='libreoffice --calc'
 alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
@@ -137,7 +138,6 @@ alias syncco='aws s3 sync . s3://conlinoakley.com/ --profile alexconlin --delete
 
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
     export HOMEBREW_CASK_OPTS='--appdir=/Applications'
     alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 fi
@@ -156,3 +156,10 @@ bindkey '^R' history-incremental-search-backward
 # export TERM=screen-256color-bce
 
 source /Users/alexgrabyo/.iterm2_shell_integration.zsh
+
+# rbenv
+eval "$(rbenv init -)"
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
