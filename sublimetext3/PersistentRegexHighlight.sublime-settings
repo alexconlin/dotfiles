@@ -1,0 +1,15 @@
+{
+    "regex": [
+	    {
+	        "pattern": "pExportedShareAnalyticsJobSegmentNumber: 176",
+	        "color": "00FF00",
+	        "ignore_case": false
+	    },
+	    {
+	        "pattern": "eKKSL7kSMEI",
+	        "color": "0000FF",
+	        "ignore_case": false
+	    }
+	],
+    "enabled": true
+}

@@ -115,7 +115,7 @@ map <C-n> :NERDTreeToggle<CR>
 set pastetoggle=<F10>
 
 " Set the default clipboard to the X windows clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Set options for line wrapping
 :set linebreak
@@ -135,3 +135,6 @@ vnoremap <leader>d "_d
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dPu
+
+" automatically refresh changed files with no changes
+:set autoread

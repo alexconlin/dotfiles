@@ -78,6 +78,9 @@ PATH=${PATH}:/opt/local/sbin
 PATH=${PATH}:/usr/local/git/bin
 PATH=${PATH}:/usr/local/git/sbin
 PATH=${PATH}:/Users/alexgrabyo/.local/bin
+PATH=${PATH}:/Users/alexgrabyo/lib/sonar-scanner-2.5/bin
+
+export SONAR_RUNNER_HOME="/Users/alexgrabyo/lib/sonar-scanner-2.5"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -105,29 +108,32 @@ PATH=${PATH}:/Users/alexgrabyo/.local/bin
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-alias tlogr='~/bin/tlog.sh'                                                                                                                                                                                                              
+alias gashl='git --no-pager stash list | head'
+alias tlogr='~/bin/tlog.sh'
 alias add_keys='~/bin/add_keys.sh'
-alias mci='mvn -f $GRABYOPATH/pom.xml clean install'
-alias mcil='mvn clean tomcat:redeploy'
+alias mci='date >> $HOME/.jrebel-mdeploy.log && mvn -f $GRABYOPATH/pom.xml clean install'
+alias mcil='date >> $HOME/.jrebel-mdeploy.log && mvn clean tomcat:redeploy'
 alias sync='~/bin/sync.sh'
 alias tlog='tail -F /var/log/tomcat7/catalina.out'
 alias vimlog='vim /var/log/tomcat7/catalina.out'
 alias tomst='/usr/share/tomcat7/bin/startup.sh'
 alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'
 alias pstom='ps aux | grep "tomcat"'
-alias mcis='mci -DskipTests=true'
-alias mcils='mvn clean tomcat:redeploy -DskipTests=true'
+alias mcis='date >> $HOME/.jrebel-mdeploy.log && mci -DskipTests=true'
+alias mcils='date >> $HOME/.jrebel-mdeploy.log && (nocorrect cd /Users/alexgrabyo/master-chef/vagrantGrabyo; vagrant ssh -c "sudo service tomcat7 restart";) && mvn clean tomcat:redeploy -DskipTests=true && (afplay ~/Music/bathtub_style.mp3) && echo '
 alias gr='cd ~/grabyo'
-alias gashl='git --no-pager stash list'
 alias syncl='~/bin/synclchc.sh'
-alias mcilsl='mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/bathtub_style.mp3)'
+alias mcilsl='date >> $HOME/.jrebel-mdeploy.log && mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/bathtub_style.mp3)'
 alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay ~/Music/bathtub_style.mp3)'
 alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
 alias cdtom='cd /usr/share/tomcat7'
 alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
 alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
 alias hrt='~/bin/hard-reset-tomcat.sh'
-alias ebenv='nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm'
+alias ebenv='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm'
+alias ebenvd='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev'
+alias ebenvdd='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev deploy'
+alias ebenvdu='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev update'
 alias es='nocorrect ebenv ssh'
 alias ess='ebenv ssh studio-prod'
 alias lo='libreoffice --calc'
@@ -135,6 +141,35 @@ alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
 alias lpssh='lpass show -c --password 2767727486'
 alias syncco='aws s3 sync . s3://conlinoakley.com/ --profile alexconlin --delete'
+alias ngf='node /Users/alexgrabyo/grabyo-tools/analytics/getFacebookNativeInsightsIds.js'
+alias sparks='~/spark/launchSparkShell.sh'
+alias serverlogin='~/bin/serverlogin.py'
+alias lst='ls -altr'
+# This next line doesn't work
+# alias tlogv="vagrant ssh $(vagrant global-status | head -n 3 | tail -n 1 | awk '{print $1;}')"
+alias cdv='cd ~/master-chef/vagrantGrabyo'
+alias -g ECL='-a ~/Applications/eclipse-jee-mars/Eclipse.app'
+alias vssh='nocorrect vagrant ssh'
+alias vgs='vagrant global-status'
+alias vup='vagrant up'
+alias gpr='open "https://bitbucket.org/grabyo/grabyo/pull-requests/new?source=$(git rev-parse --abbrev-ref HEAD)&t=1"'
+alias ip='curl curlmyip.org'
+alias ffprobe='ffprobe -hide_banner'
+alias ffmpeg='ffmpeg -hide_banner'
+
+# Writing it as a function removes the need to escape the quotes :)
+pipeline() {
+    pbpaste | sed 's/\\"/"/g' | sed 's/\\\\"/"/g' | sed 's/"{/{/g' | sed 's/}"/}/g' | pbcopy
+}
+
+pipe () {
+    if [ -z "$1" ]                           # Is parameter #1 zero length?
+    then
+        echo "A parameter is required: pipeline_id"  # Or no parameter passed.
+        return 1
+    fi
+    node /Users/alexgrabyo/grabyo-tools/analytics/getPipelineTasks.js $1 | pbcopy && pipeline && open "http://www.jsoneditoronline.org/"
+}
 
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
@@ -152,6 +187,7 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 # Terminal colors for vim solarized theme
 # export TERM=screen-256color-bce
 
@@ -163,3 +199,15 @@ eval "$(rbenv init -)"
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# go
+export GOPATH=/Users/alexgrabyo/lib/go
+export PATH=$GOPATH/bin:$PATH
+
+# personal variables
+export TRA=":twisted_rightwards_arrows:"
+export HPS=":heavy_plus_sign:"
+
+# rust
+export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
+export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib

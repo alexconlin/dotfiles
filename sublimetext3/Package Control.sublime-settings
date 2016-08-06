@@ -1,16 +1,28 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
 	"installed_packages":
 	[
 		"All Autocomplete",
+		"BracketHighlighter",
+		"Case Conversion",
+		"Color Highlighter",
 		"CSS3",
+		"DocBlockr",
+		"Filter Lines",
 		"HTML-CSS-JS Prettify",
+		"ImageMagick",
 		"Package Control",
+		"PackageDev",
+		"rsub",
+		"Sass",
 		"SideBarEnhancements",
+		"SublimeCodeIntel",
 		"SublimeLinter",
 		"SublimeLinter-jshint",
-		"SyncedSideBar"
+		"SyncedSideBar",
+		"Text Pastry"
 	]
 }
