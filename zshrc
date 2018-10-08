@@ -86,6 +86,7 @@ alias lynx='lynx -cfg=~/.lynx.cfg'
 alias gpla='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 alias gpp='gpl && gps'
 alias gn='git --no-pager'
+alias cdd='cd ~/dotfiles'
 
 gclt() {
     git clone git@git.net.local:$1
@@ -154,35 +155,6 @@ export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
 
 # pager
 export PAGER="most"
-
-# auto connect to tmux on remote server
-version_gt() {
-    test "$(echo "$@" | tr " " "\n" | gsort -V | head -n 1)" != "$1";
-}
-alex() {
-    version_gt 1.7 1.8
-}
-ssh() {
-    tmuxver=$(/usr/bin/ssh -q -t $@ "tmux -V")
-    if (test $? -eq 0)
-    then
-        ver=$(echo $tmuxver | cut -d' ' -f2-)
-        echo $ver
-        if (version_gt $ver 2.1)
-        then
-            echo here1
-            tmuxloc="/Users/aconlin-oakley/.tmux.conf" 
-        else
-            echo here2
-            tmuxloc="/Users/aconlin-oakley/.tmux-1.8.conf"
-        fi
-        scp $tmuxloc ${@: -1}:/home/aconlin-oakley/.tmux.conf || return 1
-        /usr/bin/ssh -t $@ "tmux -f /home/aconlin-oakley/.tmux.conf -2u attach || tmux -f /home/aconlin-oakley/.tmux.conf -2u new";
-    else
-        /usr/bin/ssh $@;
-    fi
-}
-alias ubssh='/usr/bin/ssh'
 
 # zsh syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
