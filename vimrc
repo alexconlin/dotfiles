@@ -148,5 +148,8 @@ set undoreload=10000        " number of lines to save for undo
 " Enable fzf (installed via homebrew)
 set rtp+=/usr/local/opt/fzf
 
+" set up leader
+let mapleader=','
+let maplocalleader=','
 map <leader>, :FZF<cr>
 
