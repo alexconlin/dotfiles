@@ -152,3 +152,5 @@ alias emacs='emacs -nw'
 # Alex insertions 02/10/14 as per http://askubuntu.com/questions/528340/adding-unread-message-count-to-terminal-command-prompt
 # PROMPT_COMMAND="$(newmail_cmdprompt)"
 [ -s "/Users/alexgrabyo/.scm_breeze/scm_breeze.sh" ] && source "/Users/alexgrabyo/.scm_breeze/scm_breeze.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
