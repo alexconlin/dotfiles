@@ -1,18 +1,8 @@
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
-    if [[ $(hostname) == 'alexs-grabyo-macbook-pro' ]]
-    then
-        GRABYOPATH="/Users/alexgrabyo/grabyo"
-        GITHOMEPATH="/Users/alexgrabyo"
-    else
-        GRABYOPATH="/Users/alexgrabyo/gitrepositories/grabyo/grabyo"
-        GITHOMEPATH="/Users/alexgrabyo/gitrepositories"
-    fi
 else
     ENVIR="linux";
-    GRABYOPATH="/home/alex/grabyo"
-    GITHOMEPATH="/home/alex"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -24,20 +14,8 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
  export UPDATE_ZSH_DAYS=7
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
  ENABLE_CORRECTION="true"
@@ -45,24 +23,11 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git lol ruby mvn node sublime)
+plugins=(lol ruby mvn node sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,27 +42,17 @@ PATH=${PATH}:/opt/local/bin
 PATH=${PATH}:/opt/local/sbin
 PATH=${PATH}:/usr/local/git/bin
 PATH=${PATH}:/usr/local/git/sbin
-PATH=${PATH}:/Users/alexgrabyo/.local/bin
-PATH=${PATH}:/Users/alexgrabyo/lib/sonar-scanner-2.5/bin
+PATH=${PATH}:/Users/aconlin-oakley/.local/bin
+PATH=${PATH}:/Users/aconlin-oakley/lib/sonar-scanner-2.5/bin
 
-export SONAR_RUNNER_HOME="/Users/alexgrabyo/lib/sonar-scanner-2.5"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export GROOVY_HOME=/usr/local/opt/groovy@2.4.3/libexec
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -107,69 +62,52 @@ export SONAR_RUNNER_HOME="/Users/alexgrabyo/lib/sonar-scanner-2.5"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-alias gashl='git --no-pager stash list | head'
-alias tlogr='~/bin/tlog.sh'
-alias add_keys='~/bin/add_keys.sh'
-alias mci='date >> $HOME/.jrebel-mdeploy.log && mvn -f $GRABYOPATH/pom.xml clean install'
-alias mcil='date >> $HOME/.jrebel-mdeploy.log && mvn clean tomcat:redeploy'
-alias sync='~/bin/sync.sh'
-alias tlog='tail -F /var/log/tomcat7/catalina.out'
-alias vimlog='vim /var/log/tomcat7/catalina.out'
-alias tomst='/usr/share/tomcat7/bin/startup.sh'
-alias tomsh='/usr/share/tomcat7/bin/shutdown.sh'
-alias pstom='ps aux | grep "tomcat"'
-alias mcis='date >> $HOME/.jrebel-mdeploy.log && mci -DskipTests=true'
-alias mcils='date >> $HOME/.jrebel-mdeploy.log && (nocorrect cd /Users/alexgrabyo/master-chef/vagrantGrabyo; vagrant ssh -c "sudo service tomcat7 restart";) && mvn clean tomcat:redeploy -DskipTests=true && (afplay ~/Music/bathtub_style.mp3) && echo '
-alias gr='cd ~/grabyo'
-alias syncl='~/bin/synclchc.sh'
-alias mcilsl='date >> $HOME/.jrebel-mdeploy.log && mvn clean tomcat:redeploy -DskipTests -P localhost && (afplay ~/Music/bathtub_style.mp3)'
-alias lsync='nocorrect sudo lsyncd ~/bin/lsync-localhost-config.lua || (afplay ~/Music/bathtub_style.mp3)'
-alias sqlw='sh ~/sqlworkbenchj/sqlworkbench.sh &'
-alias cdtom='cd /usr/share/tomcat7'
-alias rmgrab='rm -r /usr/share/tomcat7/webapps/grabyo*'
-alias setenv='vim /usr/share/tomcat7/bin/setenv.sh'
-alias hrt='~/bin/hard-reset-tomcat.sh'
-alias ebenv='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm'
-alias ebenvd='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev'
-alias ebenvdd='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev deploy'
-alias ebenvdu='date >> $HOME/.jrebel-adeploy.log && nocorrect ruby $GITHOMEPATH/ruby-scripts/grabyo/aws-eb-env.rb --use-iterm -a grabyo-dev update'
-alias es='nocorrect ebenv ssh'
-alias ess='ebenv ssh studio-prod'
-alias lo='libreoffice --calc'
 alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
-alias lpssh='lpass show -c --password 2767727486'
+alias gashl='git --no-pager stash list | head'
 alias syncco='aws s3 sync . s3://conlinoakley.com/ --profile alexconlin --delete'
-alias ngf='node /Users/alexgrabyo/grabyo-tools/analytics/getFacebookNativeInsightsIds.js'
-alias sparks='~/spark/launchSparkShell.sh'
-alias serverlogin='~/bin/serverlogin.py'
 alias lst='ls -altr'
-# This next line doesn't work
-# alias tlogv="vagrant ssh $(vagrant global-status | head -n 3 | tail -n 1 | awk '{print $1;}')"
-alias cdv='cd ~/master-chef/vagrantGrabyo'
-alias -g ECL='-a ~/Applications/eclipse-jee-mars/Eclipse.app'
-alias vssh='nocorrect vagrant ssh'
-alias vgs='vagrant global-status'
-alias vup='vagrant up'
-alias gpr='open "https://bitbucket.org/grabyo/grabyo/pull-requests/new?source=$(git rev-parse --abbrev-ref HEAD)&t=1"'
+alias gi='ge /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
 alias ip='curl curlmyip.org'
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
+alias cdl='cd ~/Movies/lightningtalks'
+alias cdm='cd ~/Movies'
+alias rslt='rsync /Volumes/Untitled/MP_ROOT/100ANV01/MAH*.MP4 /Users/aconlin-oakley/Movies/lightningtalks --ignore-existing'
+alias glb='gl --invert-grep --grep=Autobumper'
+alias rsync='rsync --progress'
+alias rofl='sudo ifconfig en0 down && sudo gtimeout 1s route flush && sleep 1 && sudo ifconfig en0 up'
+alias cleandb='gradle -b ~/code/ideas/build.gradle :TIMWeb:databases:importDb-minimal'
+alias gashu='git stash save --include-untracked'
+alias bel="echo -en '\a'"
+alias geo='ge /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
+alias gh='lpass show 5086150539736595802 --field=Passphrase -c'
+alias lynx='lynx -cfg=~/.lynx.cfg'
+alias gpla='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
+alias gpp='gpl && gps'
+alias gn='git --no-pager'
+
+gclt() {
+    git clone git@git.net.local:$1
+}
 
 # Writing it as a function removes the need to escape the quotes :)
 pipeline() {
     pbpaste | sed 's/\\"/"/g' | sed 's/\\\\"/"/g' | sed 's/"{/{/g' | sed 's/}"/}/g' | pbcopy
 }
 
-pipe () {
-    if [ -z "$1" ]                           # Is parameter #1 zero length?
-    then
-        echo "A parameter is required: pipeline_id"  # Or no parameter passed.
-        return 1
-    fi
-    node /Users/alexgrabyo/grabyo-tools/analytics/getPipelineTasks.js $1 | pbcopy && pipeline && open "http://www.jsoneditoronline.org/"
+# Setup tab and window title functions for iterm2
+# iterm behaviour: until window name is explicitly set, it'll always track tab title.
+# So, to have different window and tab titles, iterm_window() must be called
+# first. iterm_both() resets this behaviour and has window track tab title again).
+# Source: http://superuser.com/a/344397
+set_iterm_name() {
+  mode=$1; shift
+  echo -ne "\033]$mode;$@\007"
 }
+iterm_both () { set_iterm_name 0 $@; }
+iterm_tab () { set_iterm_name 1 $@; }
+iterm_window () { set_iterm_name 2 $@; }
 
 # HOME
 if [[ "$ENVIR" == "osx" ]] then
@@ -188,10 +126,12 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
+#bindkey '\e[A' history-beginning-search-backward
+#bindkey '\e[B' history-beginning-search-forward
 # Terminal colors for vim solarized theme
 # export TERM=screen-256color-bce
 
-source /Users/alexgrabyo/.iterm2_shell_integration.zsh
+source /Users/aconlin-oakley/.iterm2_shell_integration.zsh
 
 # rbenv
 eval "$(rbenv init -)"
@@ -201,7 +141,7 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 # go
-export GOPATH=/Users/alexgrabyo/lib/go
+export GOPATH=/Users/aconlin-oakley/lib/go
 export PATH=$GOPATH/bin:$PATH
 
 # personal variables
@@ -211,6 +151,68 @@ export HPS=":heavy_plus_sign:"
 # rust
 export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
 export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
+
+# pager
+export PAGER="most"
+
+# auto connect to tmux on remote server
+version_gt() {
+    test "$(echo "$@" | tr " " "\n" | gsort -V | head -n 1)" != "$1";
+}
+alex() {
+    version_gt 1.7 1.8
+}
+ssh() {
+    tmuxver=$(/usr/bin/ssh -q -t $@ "tmux -V")
+    if (test $? -eq 0)
+    then
+        ver=$(echo $tmuxver | cut -d' ' -f2-)
+        echo $ver
+        if (version_gt $ver 2.1)
+        then
+            echo here1
+            tmuxloc="/Users/aconlin-oakley/.tmux.conf" 
+        else
+            echo here2
+            tmuxloc="/Users/aconlin-oakley/.tmux-1.8.conf"
+        fi
+        scp $tmuxloc ${@: -1}:/home/aconlin-oakley/.tmux.conf || return 1
+        /usr/bin/ssh -t $@ "tmux -f /home/aconlin-oakley/.tmux.conf -2u attach || tmux -f /home/aconlin-oakley/.tmux.conf -2u new";
+    else
+        /usr/bin/ssh $@;
+    fi
+}
+alias ubssh='/usr/bin/ssh'
+
+# zsh syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/github/hub
+eval "$(hub alias -s)"
+
+# http://git.youdevise.com/gitweb/?p=stackbuilder-config.git;a=tree;f=docker;h=1feb1b1b44734a8930a28e650d71601e758ef351;hb=HEAD
+alias stacks='docker run --rm -e "MCOLLECTIVE_SSL_PRIVATE=~/.ssh/id_rsa" -e "MCOLLECTIVE_SSL_PUBLIC=~/.ssh/id_rsa.pem" -v "/Users/aconlin-oakley/code/stackbuilder-config":/git -v "$HOME/.mc:/mc" --volumes-from=ssh-agent -e "SSH_AUTH_SOCK=/.ssh-agent/socket" timgroup-stacks'
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# Android dev / React Native
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/aconlin-oakley/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/aconlin-oakley/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+export MOST_SWITCHES="-w"
+
+PROMPT='${ret_status} %D %* %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
