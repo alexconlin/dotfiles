@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
@@ -15,19 +16,19 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to change how often to auto-update (in days).
- export UPDATE_ZSH_DAYS=7
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to enable command auto-correction.
- ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
- COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(lol ruby mvn node sublime)
+plugins=(lol ruby sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,6 +45,7 @@ PATH=${PATH}:/usr/local/git/bin
 PATH=${PATH}:/usr/local/git/sbin
 PATH=${PATH}:/Users/aconlin-oakley/.local/bin
 PATH=${PATH}:/Users/aconlin-oakley/lib/sonar-scanner-2.5/bin
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 export GROOVY_HOME=/usr/local/opt/groovy@2.4.3/libexec
 
@@ -58,10 +60,6 @@ export EDITOR='vim'
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vimz='vim ~/.zshrc'
 alias srcz='source ~/.zshrc'
 alias gashl='git --no-pager stash list | head'
@@ -87,6 +85,16 @@ alias gpla='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD
 alias gpp='gpl && gps'
 alias gn='git --no-pager'
 alias cdd='cd ~/dotfiles'
+alias cdc='cd ~/code'
+alias hub='nocorrect hub'
+alias vim='nvim'
+alias vimv='vim ~/.config/nvim/init.vim'
+alias ag='rg'
+alias vimt='vim ~/.tmux.conf'
+
+mkdircd() {
+    mkdir $1 && cd $1
+}
 
 gclt() {
     git clone git@git.net.local:$1
@@ -150,11 +158,8 @@ export TRA=":twisted_rightwards_arrows:"
 export HPS=":heavy_plus_sign:"
 
 # rust
-export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
-export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
-
-# pager
-export PAGER="most"
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 
 # zsh syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -167,20 +172,12 @@ alias stacks='docker run --rm -e "MCOLLECTIVE_SSL_PRIVATE=~/.ssh/id_rsa" -e "MCO
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Android dev / React Native
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/aconlin-oakley/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/aconlin-oakley/.nvm/versions/node/v8.9.4/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
@@ -188,3 +185,29 @@ export MOST_SWITCHES="-w"
 
 PROMPT='${ret_status} %D %* %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
+# export PATH="/usr/local/miniconda3/bin:$PATH"  # commented out by conda initialize
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+source <(kubectl completion zsh)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/aconlin-oakley/.nvm/versions/node/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/aconlin-oakley/.nvm/versions/node/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
