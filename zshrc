@@ -36,7 +36,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-source .secrets
+source ~/dotfiles/.secrets
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=${PATH}:/bin
