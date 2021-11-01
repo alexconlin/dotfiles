@@ -184,28 +184,28 @@ PROMPT='${ret_status} %D %* %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/usr/local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/usr/local/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/usr/local/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/usr/local/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
 
-source <(kubectl completion zsh)
+#source <(kubectl completion zsh)
 alias k=kubectl
-complete -F __start_kubectl k
+#complete -F __start_kubectl k
 alias kpg='kubectl --context pg'
-complete -F __start_kubectl kpg
+#complete -F __start_kubectl kpg
 alias koy='kubectl --context oy'
-complete -F __start_kubectl koy
+#complete -F __start_kubectl koy
 alias koyt='kubectl --context oytest'
-complete -F __start_kubectl koyt
+#complete -F __start_kubectl koyt
 kexec() {
   kubectl -n "$1" exec -it $(kubectl -n "$1" get pod -l stack="$2" -o json | jq -r '.items[0].metadata.name') /bin/bash
 }
@@ -231,7 +231,14 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-autoload -Uz compinit && compinit
+# Speed up zsh compinit by only checking cache once a day
+# https://gist.github.com/ctechols/ca1035271ad134841284
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit;
+else
+  compinit -C;
+fi;
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 
