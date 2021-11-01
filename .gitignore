@@ -10,3 +10,6 @@ sublimetext3/Color Highlighter/*
 sublimetext3/ColorScheme/*
 sublimetext3/Package Control.system-ca-bundle
 sublimetext3/TextPastryHistory.sublime-settings
+
+# Secrets file
+.secrets
