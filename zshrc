@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+#zmodload zsh/zprof
 if [[ $(uname) == 'Darwin' ]]
 then
     ENVIR="osx";
